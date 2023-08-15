@@ -12,6 +12,7 @@ import com.devSuperio.DSList.dto.GameDTO;
 import com.devSuperio.DSList.dto.GameListDTO;
 import com.devSuperio.DSList.dto.GameMinDTO;
 import com.devSuperio.DSList.entities.Game;
+import com.devSuperio.DSList.projections.GameMinProjection;
 import com.devSuperio.DSList.services.GameListService;
 import com.devSuperio.DSList.services.GameService;
 
@@ -22,10 +23,18 @@ public class GameListController {
 	@Autowired
 	private GameListService gameListService;
 	
+	@Autowired
+	private GameService gameService;
+	
 	@GetMapping
 	private List<GameListDTO> findAll(){
 		List<GameListDTO> result = gameListService.findAll();
 		return result;
 	}
 	
+	@GetMapping(value = "/{listId}/games")
+	private List<GameMinDTO> findByList(@PathVariable Long listId){
+		List<GameMinDTO> result = gameService.findByList(listId);
+		return result;
+	}
 }

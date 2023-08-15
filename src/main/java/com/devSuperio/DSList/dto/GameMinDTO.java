@@ -1,6 +1,7 @@
 package com.devSuperio.DSList.dto;
 
 import com.devSuperio.DSList.entities.Game;
+import com.devSuperio.DSList.projections.GameMinProjection;
 
 public class GameMinDTO {
 
@@ -21,6 +22,16 @@ public class GameMinDTO {
 		imgUrl = entity.getImgUrl();
 		shortDescription = entity.getShortDescription();
 		score = entity.getScore();
+	}
+
+	
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		score = projection.getScore();
+		year = projection.getYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
 	}
 
 	public Double getScore() {
